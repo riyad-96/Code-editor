@@ -89,7 +89,7 @@ header {
   min-width: 25px;
   background-color: var(--label-bg);
   border-inline-start: 1px solid var(--label-border-clr);
-  cursor: col-resize;
+  /* cursor: col-resize; */
 }
 
 .html,
