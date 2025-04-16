@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Code Editor</title>
+
+  <link rel="stylesheet" href="./main.css">
+  <script src="./app.js" defer></script>
+</head>
+
+<body>
+
+  <main>
+    <header>
+      <div class="title">Untitled</div>
+      <div class="settings">
+        <button class="run-btn">Run</button>
+      </div>
+    </header>
+
+    <div class="editor left">
+      <div class="code-writing-area">
+        <div class="html">
+          <label for="html" class="file-name">HTML</label>
+          <textarea name="html" id="html"></textarea>
+        </div>
+
+        <div class="css">
+          <label for="css" class="file-name">CSS</label>
+          <textarea name="css" id="css"></textarea>
+        </div>
+        
+        <div class="js">
+          <label for="js" class="file-name">JS</label>
+          <textarea name="js" id="js"></textarea>
+        </div>
+      </div>
+
+      <div class="resizer"></div>
+
+      <div class="preview-area right">
+        <iframe id="preview-screen"></iframe>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+
+</html>
