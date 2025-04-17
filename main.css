@@ -1,7 +1,13 @@
 @font-face {
-  font-family: 'Fira code';
-  src: url('./assets/fonts/fira-code-v22-latin-700.woff2') format('woff2');
-  font-weight: 700;
+  font-family: 'Roboto';
+  src: url('./assets/fonts/roboto-v47-latin-600.woff2') format('woff2');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('./assets/fonts/roboto-v47-latin-400.woff2') format('woff2');
+  font-weight: 400;
 }
 
 @font-face {
@@ -18,14 +24,13 @@
 
 :root {
   --header-bg: #161616;
-  --project-title-clr: #eee;
+  --project-title-clr: #ffffff;
   --label-bg: #1c1c1c;
   --label-border-clr: #2d2d2d;
 }
 
 
 * {
-  font-family: 'Fira code';
   box-sizing: border-box;
 }
 
@@ -39,6 +44,7 @@ body {
   margin: 0;
 }
 
+/* ! Header styling */
 header {
   height: 65px;
   background-color: var(--header-bg);
@@ -48,9 +54,50 @@ header {
   padding-inline: 1rem;
 }
 
-.title {
+.title-container {
   color: var(--project-title-clr);
   font-size: 1.325rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-family: 'Roboto';
+}
+
+.title {
+  /* display: flex; */
+
+  h1 {
+    margin: 0;
+    font-size: 1.525rem;
+    letter-spacing: 1px;
+  }
+
+  img{
+    cursor: pointer;
+  }
+}
+
+.edit-project-title{
+  display: flex;
+  align-items: center;
+  gap: 0.125rem;
+}
+
+.username{
+  display: flex;
+  gap: 0.325rem;
+  align-items: center;
+
+  a{
+    color: #9b9dad;
+    text-decoration: none;
+    font-size: 0.925rem;
+  }
+
+  a:hover{
+    color: inherit;
+  }
 }
 
 .run-btn {
@@ -69,7 +116,7 @@ header {
   }
 }
 
-
+/* ! Editor Styling */
 .editor {
   height: calc(100vh - 65px);
   background-color: white;
@@ -107,6 +154,7 @@ label {
   display: block;
   background-color: #1c1c1c;
   color: #aaaebc;
+  font-family: 'Fira code';
   font-weight: 600;
   letter-spacing: 1px;
   font-size: 1.125rem;
@@ -125,7 +173,7 @@ textarea {
   color: #eee;
   font-size: 1rem;
   padding-block: 0.525rem 5rem;
-  padding-inline: 1rem;
+  padding-inline: 1rem 5rem;
 }
 
 textarea::selection {
@@ -146,6 +194,10 @@ textarea::-webkit-scrollbar-thumb {
   cursor: default;
 }
 
+textarea::-webkit-scrollbar-corner {
+  display: none;
+}
+
 /*! preview screen styling */
 .preview-area {
   /* min-width: 450px; */
@@ -157,4 +209,4 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
-} 
+}

@@ -14,7 +14,22 @@
 
   <main>
     <header>
-      <div class="title">Untitled</div>
+      <div class="title-container">
+        <img width="35" src="./assets/icon.svg" alt="">
+
+        <div class="title">
+          <div class="edit-project-title">
+            <h1 title="edit">Untitled</h1>
+            <img width="20" title="Click to edit project title" src="./assets/pen.svg" alt="pen">
+          </div>
+
+          <div class="username">
+            <a href="#">@username</a>
+            <img width="15" title="Click to edit username & profile link" src="./assets/pen.svg" alt="pen">
+          </div>
+        </div>
+      </div>
+
       <div class="settings">
         <button class="run-btn">Run</button>
       </div>
@@ -24,17 +39,17 @@
       <div class="code-writing-area">
         <div class="html">
           <label for="html" class="file-name">HTML</label>
-          <textarea name="html" id="html"></textarea>
+          <textarea name="html" id="html" wrap="off"></textarea>
         </div>
 
         <div class="css">
           <label for="css" class="file-name">CSS</label>
-          <textarea name="css" id="css"></textarea>
+          <textarea name="css" id="css" wrap="off"></textarea>
         </div>
-        
+
         <div class="js">
           <label for="js" class="file-name">JS</label>
-          <textarea name="js" id="js"></textarea>
+          <textarea name="js" id="js" wrap="off"></textarea>
         </div>
       </div>
 
