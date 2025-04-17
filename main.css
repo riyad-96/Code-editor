@@ -445,12 +445,12 @@ iframe {
     color: #fff;
   }
 
-  @media(width >=450px) {
+  @media(width >=480px) and (height >=600px) {
     display: none;
   }
 }
 
-@media(width < 450px) {
+@media(width < 480px){
   body {
     background-color: #131417;
   }
