@@ -27,6 +27,7 @@
   --project-title-clr: #ffffff;
   --label-bg: #1c1c1c;
   --label-border-clr: #2d2d2d;
+  --textarea-bg: #1d1e22;
 
   --ui-btn-bg: #444857;
 }
@@ -114,7 +115,7 @@ header {
     font-size: 0.925rem;
   }
 
-  a:active{
+  a:active {
     text-decoration: underline;
   }
 
@@ -212,7 +213,6 @@ form {
   }
 }
 
-
 .run-btn {
   background-color: var(--ui-btn-bg);
   color: #eee;
@@ -233,17 +233,16 @@ form {
 
 /* ! Editor Styling */
 .editor {
-  height: calc(100vh - 65px);
-  background-color: white;
   display: flex;
-  position: relative;
+  width: 100%;
+  height: calc(100vh - 65px);
 }
 
 .code-writing-area {
+  background-color: var(--textarea-bg);
   display: flex;
   flex-direction: column;
-  min-width: 405px;
-  /* width: 250px; */
+  min-width: 450px;
   overflow-y: auto;
 }
 
@@ -251,7 +250,21 @@ form {
   min-width: 25px;
   background-color: var(--label-bg);
   border-inline-start: 1px solid var(--label-border-clr);
-  /* cursor: col-resize; */
+  cursor: col-resize;
+  display: flex;
+  align-items: center;
+  user-select: none;
+
+  span{
+    font-family: 'Roboto';
+    color: #474747;
+    transform: rotate(180deg) translateX(-2px);
+    writing-mode: vertical-lr;
+  }
+
+  &:hover span{
+    color: #cecece;
+  }
 }
 
 .html,
@@ -275,6 +288,9 @@ form {
   font-size: 1.125rem;
   padding: 0.325rem 1rem;
   border-block-start: 1px solid #2d2d2d;
+  display: flex;
+  align-items: center;
+  gap: 0.425rem;
 }
 
 textarea {
@@ -284,7 +300,7 @@ textarea {
   resize: none;
   outline: none;
 
-  background-color: #1d1e22;
+  background-color: var(--textarea-bg);
   color: #eee;
   font-family: 'Fira code';
   font-size: 1rem;
@@ -325,6 +341,8 @@ iframe {
   width: 100%;
   height: 100%;
   border: none;
+  border-block-start: 1px solid var(--label-border-clr);
+  border-inline-start: 1px solid var(--label-border-clr);
 }
 
 
@@ -333,8 +351,7 @@ iframe {
   display: grid;
 }
 
-
-.project-info img:hover{
+.project-info img:hover {
   animation-name: shake-it;
   animation-duration: 500ms;
   animation-timing-function: ease-in-out;
@@ -347,11 +364,17 @@ iframe {
   100% {
     transform: rotate(0);
   }
-  33%{
+
+  33% {
     transform: rotate(8deg);
   }
-  80%{
+
+  80% {
     transform: rotate(-10deg);
   }
 
+}
+
+.resize{
+  min-width: calc(100% - 25px);
 }

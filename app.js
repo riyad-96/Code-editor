@@ -171,7 +171,23 @@ window.addEventListener("DOMContentLoaded", () => {
   runCode();
 });
 
-// setTimeout(() => {
-//   const headTitle = document.querySelector('head title');
-//   headTitle.textContent = h1.textContent + ''
-// }, 10)
+
+//! Resize functionalities 
+const resizer = document.querySelector('.resizer')
+const codeWritingSpace = document.querySelector('.code-writing-area')
+let isResizing = false
+
+resizer.addEventListener('mousedown', (e) => {
+  isResizing = true;
+  e.preventDefault()
+})
+
+document.addEventListener('mousemove', e => {
+  if(!isResizing) return;
+
+  
+})
+
+resizer.addEventListener('dblclick', () => {
+  codeWritingSpace.classList.toggle('resize')
+})
