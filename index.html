@@ -8,7 +8,10 @@
   <title>Code Editor</title>
 
   <link rel="stylesheet" href="./main.css">
+
+
   <script src="./app.js" defer></script>
+
 </head>
 
 <body>
@@ -56,10 +59,10 @@
       </div>
 
       <div class="settings">
-        <div class="setting-buttons">
+        <div class="format-all-btn setting-buttons" title="Click to format code and save">
           <span>Format Code</span>
         </div>
-        <div class="run-btn setting-buttons">
+        <div class="run-btn setting-buttons" title="Click to run code">
           <span>RUN</span>
         </div>
       </div>
@@ -77,7 +80,7 @@
             </svg>
             <span>HTML</span>
           </label>
-          <textarea name="html" id="html" wrap="off"></textarea>
+          <textarea name="html" id="html" wrap="off" placeholder="&lt;!-- Type your HTML magic here --&gt;"></textarea>
         </div>
 
         <div class="css">
@@ -90,7 +93,7 @@
             </svg>
             <span>CSS</span>
           </label>
-          <textarea name="css" id="css" wrap="off"></textarea>
+          <textarea name="css" id="css" wrap="off" placeholder="/* Style it like a pro */"></textarea>
         </div>
 
         <div class="js">
@@ -103,7 +106,7 @@
             </svg>
             <span>JS</span>
           </label>
-          <textarea name="js" id="js" wrap="off"></textarea>
+          <textarea name="js" id="js" wrap="off" placeholder="// Write some JS that wows the world"></textarea>
         </div>
       </div>
 
@@ -118,6 +121,23 @@
 
   </main>
 
+  <div class="formatted-confirmation"><span>Formatted & saved</span></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.0.3/standalone.js"
+    integrity="sha512-kZgYwuJlmuFDs982ccZLP9D+TIz/FqkxFQe+G0/TY11X4WqwUZn6P263vtzyt56GThngcoOD9JFvdJsT+D52ow=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.0.3/parser-postcss.min.js"
+    integrity="sha512-zq5haHKqL4LvxKb2G/46hdhBNp6FXhzmi1nNqsQjJReAYWXCqEWdAR1l3WEfS9AR7nPER62xRSCkO7vH/EFlVA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.0.3/parser-babel.min.js"
+    integrity="sha512-2VpL2CQOwACkU58IzGit5Zvl1cinncah3Pd6k0BEhzRhx7jlCAPtK+b8E10+17TrMFg6Nzs8pZGHBJqAR8Tjbg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prettier/2.0.3/parser-html.min.js"
+    integrity="sha512-DrpA7iAMX9jbdDayBwvC+lNpTJRrjb7p1YoK+R0qLmdKOSwLkg6n7cjHOfGP5gnB4RxGdUim1CeKG3UD2PYO5w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 
 </html>

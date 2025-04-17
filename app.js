@@ -109,6 +109,15 @@ const closeBtn = form.querySelector(".close-btn");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
+form.querySelectorAll("input").forEach((button) => {
+  button.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      saveBtn.click();
+    }
+  });
+});
+const profileInputArr = [profileNameInput, profileLinkInput];
 
 function toggleFormModal() {
   formModal.classList.toggle("toggle-display");
@@ -163,13 +172,13 @@ allToggleElement.forEach((element) =>
 );
 
 //! Load everything on screen load
-window.addEventListener("DOMContentLoaded", () => {
-  addToTabTitle();
-  loadTitle();
-  loadProfileInfo();
-  loadAllCode();
-  runCode();
-});
+// window.addEventListener("DOMContentLoaded", () => {
+//   addToTabTitle();
+//   loadTitle();
+//   loadProfileInfo();
+//   loadAllCode();
+//   runCode();
+// });
 
 //! Resize functionalities
 const resizer = document.querySelector(".resizer");
@@ -212,4 +221,67 @@ allLangInput.forEach((input) => {
       input.selectionStart = input.selectionEnd = start + spaces.length;
     }
   });
+});
+
+//! Format all input code
+const formatAll = document.querySelector(".format-all-btn");
+
+// function formatAllCode() {
+//   const htmlCode = htmlInput.value
+//   const cssCode = cssInput.value
+//   const jsCode = jsInput.value
+//   htmlInput.value = prettierFormat(htmlCode, 'html');
+//   cssInput.value = prettierFormat(cssCode, 'css');
+//   jsInput.value = prettierFormat(jsCode, 'babel');
+// }
+
+// function prettierFormat(code, language) {
+//   const formatted = prettier.format(code, {
+//     parser: language,
+//     plugins: prettierPlugins
+//   })
+//   return formatted
+// }
+
+const inputs = [
+  { el: htmlInput, parser: "html" },
+  { el: cssInput, parser: "css" },
+  { el: jsInput, parser: "babel" },
+];
+
+function formatAllCode() {
+  inputs.forEach(({ el, parser }) => {
+    el.value = prettier.format(el.value, {
+      // parser: parser,
+      parser,
+      plugins: prettierPlugins,
+    });
+  });
+  saveToLocalStorage();
+  showConfirmationOnFormat();
+}
+
+const formatConfirmation = document.querySelector(".formatted-confirmation");
+let runningConfirmation = false;
+function showConfirmationOnFormat() {
+  if (!runningConfirmation) {
+    runningConfirmation = true;
+    formatConfirmation.classList.add("format-confirm");
+
+    setTimeout(() => {
+      formatConfirmation.classList.remove("format-confirm");
+      runningConfirmation = false;
+    }, 2500);
+  }
+}
+
+formatAll.addEventListener("click", formatAllCode);
+
+//! Load everything on screen load
+window.addEventListener("DOMContentLoaded", () => {
+  addToTabTitle();
+  loadTitle();
+  loadProfileInfo();
+  loadAllCode();
+  runCode();
 });
