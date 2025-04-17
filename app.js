@@ -68,12 +68,23 @@ function saveOnBlur() {
   editPen.style.display = "unset";
 
   localStorage.setItem("project-title", value);
+  addToTabTitle()
 }
 
 function loadTitle() {
   const projectTitle = localStorage.getItem("project-title");
   if (projectTitle) h1.textContent = projectTitle;
   if (projectTitle) titleInput.value = projectTitle;
+}
+
+function addToTabTitle() {
+  const title = localStorage.getItem("project-title");
+  const headTitle = document.querySelector('head title')
+  if(title) {
+    headTitle.textContent = title + '- Code editor'
+  } else{
+    headTitle.textContent = 'Code editor'
+  }
 }
 
 editPen.addEventListener("click", editTitle);
@@ -105,57 +116,62 @@ function toggleFormModal() {
 
 function saveProfileInfo() {
   // const name = profileNameInput.value
-  const name = profileNameInput.value.trim().replace(/\b\w/g, char => char.toUpperCase())
-  const link = profileLinkInput.value.trim()
+  const name = profileNameInput.value
+    .trim()
+    .replace(/\b\w/g, (char) => char.toUpperCase());
+  const link = profileLinkInput.value.trim();
 
   if (name) {
-    showUserName.textContent = name
-    localStorage.setItem('profileName', name)
+    showUserName.textContent = name;
+    localStorage.setItem("profileName", name);
   } else {
-    showUserName.textContent = '@username'
-    localStorage.removeItem('profileName')
+    showUserName.textContent = "@username";
+    localStorage.removeItem("profileName");
   }
   if (link) {
-    showUserName.href = `https://github.com/${link}/`
-    showUserName.setAttribute('target', '_blank')
-    localStorage.setItem('profileLink', link)
+    showUserName.href = `https://github.com/${link}/`;
+    showUserName.setAttribute("target", "_blank");
+    localStorage.setItem("profileLink", link);
   } else {
-    showUserName.href = '#'
-    showUserName.removeAttribute('target')
-    localStorage.removeItem('profileLink')
+    showUserName.href = "#";
+    showUserName.removeAttribute("target");
+    localStorage.removeItem("profileLink");
   }
 
-  setTimeout(toggleFormModal, 50)
+  setTimeout(toggleFormModal, 50);
 }
 
 function loadProfileInfo() {
-  const profileName = localStorage.getItem('profileName')
-  const profileLink = localStorage.getItem('profileLink')
+  const profileName = localStorage.getItem("profileName");
+  const profileLink = localStorage.getItem("profileLink");
   if (profileName) {
-    showUserName.textContent = profileName
-    profileNameInput.value = profileName
+    showUserName.textContent = profileName;
+    profileNameInput.value = profileName;
   }
   if (profileLink) {
-    showUserName.href = `https://github.com/${profileLink}/`
-    showUserName.setAttribute('target', '_blank')
-    profileLinkInput.value = profileLink
+    showUserName.href = `https://github.com/${profileLink}/`;
+    showUserName.setAttribute("target", "_blank");
+    profileLinkInput.value = profileLink;
   }
 }
 
 saveBtn.addEventListener("click", saveProfileInfo);
 
-const allToggleElement = [usernameEditBtn, overlay, closeBtn]
-allToggleElement.forEach((element) => element.addEventListener("click", toggleFormModal));
-
-
-
-
-
+const allToggleElement = [usernameEditBtn, overlay, closeBtn];
+allToggleElement.forEach((element) =>
+  element.addEventListener("click", toggleFormModal),
+);
 
 //! Load everything on screen load
 window.addEventListener("DOMContentLoaded", () => {
+  addToTabTitle();
   loadTitle();
   loadProfileInfo();
   loadAllCode();
   runCode();
 });
+
+// setTimeout(() => {
+//   const headTitle = document.querySelector('head title');
+//   headTitle.textContent = h1.textContent + ''
+// }, 10)
