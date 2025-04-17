@@ -124,7 +124,6 @@ function toggleFormModal() {
 }
 
 function saveProfileInfo() {
-  // const name = profileNameInput.value
   const name = profileNameInput.value
     .trim()
     .replace(/\b\w/g, (char) => char.toUpperCase());
@@ -171,15 +170,6 @@ allToggleElement.forEach((element) =>
   element.addEventListener("click", toggleFormModal),
 );
 
-//! Load everything on screen load
-// window.addEventListener("DOMContentLoaded", () => {
-//   addToTabTitle();
-//   loadTitle();
-//   loadProfileInfo();
-//   loadAllCode();
-//   runCode();
-// });
-
 //! Resize functionalities
 const resizer = document.querySelector(".resizer");
 const previewArea = document.querySelector(".preview-area");
@@ -225,23 +215,6 @@ allLangInput.forEach((input) => {
 
 //! Format all input code
 const formatAll = document.querySelector(".format-all-btn");
-
-// function formatAllCode() {
-//   const htmlCode = htmlInput.value
-//   const cssCode = cssInput.value
-//   const jsCode = jsInput.value
-//   htmlInput.value = prettierFormat(htmlCode, 'html');
-//   cssInput.value = prettierFormat(cssCode, 'css');
-//   jsInput.value = prettierFormat(jsCode, 'babel');
-// }
-
-// function prettierFormat(code, language) {
-//   const formatted = prettier.format(code, {
-//     parser: language,
-//     plugins: prettierPlugins
-//   })
-//   return formatted
-// }
 
 const inputs = [
   { el: htmlInput, parser: "html" },

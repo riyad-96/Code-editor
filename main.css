@@ -425,3 +425,36 @@ iframe {
   scale: 1;
   top: 10px;
 }
+
+
+.phone-message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+
+  background-color: #131417;
+  width: 100%;
+  height: 100%;
+  font-family: 'Roboto';
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  span {
+    color: #fff;
+  }
+
+  @media(width >=450px) {
+    display: none;
+  }
+}
+
+@media(width < 450px) {
+  body {
+    background-color: #131417;
+  }
+  main{
+    display: none;
+  }
+}
