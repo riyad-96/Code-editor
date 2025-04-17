@@ -68,7 +68,7 @@ function saveOnBlur() {
   editPen.style.display = "unset";
 
   localStorage.setItem("project-title", value);
-  addToTabTitle()
+  addToTabTitle();
 }
 
 function loadTitle() {
@@ -79,11 +79,11 @@ function loadTitle() {
 
 function addToTabTitle() {
   const title = localStorage.getItem("project-title");
-  const headTitle = document.querySelector('head title')
-  if(title) {
-    headTitle.textContent = title + '- Code editor'
-  } else{
-    headTitle.textContent = 'Code editor'
+  const headTitle = document.querySelector("head title");
+  if (title) {
+    headTitle.textContent = title + "- Code editor";
+  } else {
+    headTitle.textContent = "Code editor";
   }
 }
 
@@ -171,23 +171,45 @@ window.addEventListener("DOMContentLoaded", () => {
   runCode();
 });
 
+//! Resize functionalities
+const resizer = document.querySelector(".resizer");
+const previewArea = document.querySelector(".preview-area");
+const iframe = previewArea.querySelector(".preview-area iframe");
 
-//! Resize functionalities 
-const resizer = document.querySelector('.resizer')
-const codeWritingSpace = document.querySelector('.code-writing-area')
-let isResizing = false
+let isResizing = false;
 
-resizer.addEventListener('mousedown', (e) => {
+resizer.addEventListener("mousedown", () => {
   isResizing = true;
-  e.preventDefault()
-})
+  iframe.style.pointerEvents = "none";
+});
 
-document.addEventListener('mousemove', e => {
-  if(!isResizing) return;
+window.addEventListener("mousemove", (e) => {
+  if (!isResizing) return;
+  const newWidth = window.innerWidth - e.clientX - 12;
+  previewArea.style.width = `${newWidth}px`;
+});
 
-  
-})
+window.addEventListener("mouseup", () => {
+  isResizing = false;
+  iframe.style.pointerEvents = "auto";
+});
 
-resizer.addEventListener('dblclick', () => {
-  codeWritingSpace.classList.toggle('resize')
-})
+//! double space on TAB keypress
+const allLangInput = [htmlInput, cssInput, jsInput];
+allLangInput.forEach((input) => {
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Tab") {
+      e.preventDefault();
+
+      const start = input.selectionStart;
+      const end = input.selectionEnd;
+
+      const spaces = "  ";
+      const before = input.value.substring(0, start);
+      const after = input.value.substring(end);
+
+      input.value = before + spaces + after;
+      input.selectionStart = input.selectionEnd = start + spaces.length;
+    }
+  });
+});

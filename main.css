@@ -213,18 +213,34 @@ form {
   }
 }
 
-.run-btn {
-  background-color: var(--ui-btn-bg);
-  color: #eee;
-  border: none;
-  border-radius: 0.325rem;
+.settings {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+.setting-buttons {
+  height: 45px;
   font-family: 'Roboto';
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 2px;
-  padding: 7px 1rem 5px 1rem;
+  letter-spacing: 1px;
+  color: #fff;
+  background-color: var(--ui-btn-bg);
+  border: none;
+  padding-inline: 1rem;
+  border-radius: 0.325rem;
   cursor: pointer;
   transition: transform 50ms;
+  user-select: none;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background-color: #5a5f73;
+  }
 
   &:active {
     transform: translateY(1px);
@@ -236,13 +252,15 @@ form {
   display: flex;
   width: 100%;
   height: calc(100vh - 65px);
+  overflow: hidden;
 }
 
 .code-writing-area {
+  flex-grow: 1;
   background-color: var(--textarea-bg);
   display: flex;
   flex-direction: column;
-  min-width: 450px;
+  min-width: 350px;
   overflow-y: auto;
 }
 
@@ -255,15 +273,17 @@ form {
   align-items: center;
   user-select: none;
 
-  span{
+  span {
     font-family: 'Roboto';
-    color: #474747;
+    color: #b1b1b1;
     transform: rotate(180deg) translateX(-2px);
     writing-mode: vertical-lr;
+    transition: 200ms;
+    opacity: 0;
   }
 
-  &:hover span{
-    color: #cecece;
+  &:hover span {
+    opacity: 1;
   }
 }
 
@@ -319,11 +339,20 @@ textarea::-webkit-scrollbar {
 
 textarea::-webkit-scrollbar-track {
   background: transparent;
+  cursor: pointer;
 }
 
 textarea::-webkit-scrollbar-thumb {
-  background: #666b7a;
+  background: rgba(102, 107, 122, 0.7);
   cursor: default;
+}
+
+textarea::-webkit-scrollbar-thumb:hover{
+  background-color: rgba(102, 107, 122, 0.7);
+}
+
+textarea::-webkit-scrollbar-thumb:active{
+  background-color: #666b7a;
 }
 
 textarea::-webkit-scrollbar-corner {
@@ -332,8 +361,8 @@ textarea::-webkit-scrollbar-corner {
 
 /*! preview screen styling */
 .preview-area {
-  /* min-width: 450px; */
-  flex-grow: 1;
+  width: 70%;
+  /* flex-grow: 1; */
   display: flex;
 }
 
@@ -373,8 +402,4 @@ iframe {
     transform: rotate(-10deg);
   }
 
-}
-
-.resize{
-  min-width: calc(100% - 25px);
 }
