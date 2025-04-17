@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./assets/images/codepen-favicon.ico" type="image/x-icon">
   <title>Code Editor</title>
 
   <link rel="stylesheet" href="./main.css">
@@ -14,24 +15,48 @@
 
   <main>
     <header>
-      <div class="title-container">
+      <div class="project-info-container">
         <img width="35" src="./assets/icon.svg" alt="">
 
-        <div class="title">
-          <div class="edit-project-title">
-            <h1 title="edit">Untitled</h1>
+        <div class="project-info">
+          <div class="project-title">
+            <div class="title">
+              <h1>Untitled</h1>
+              <input type="text" maxlength="40" placeholder="Untitled">
+            </div>
+            
             <img width="20" title="Click to edit project title" src="./assets/pen.svg" alt="pen">
           </div>
 
           <div class="username">
             <a href="#">@username</a>
             <img width="15" title="Click to edit username & profile link" src="./assets/pen.svg" alt="pen">
+
+            <div class="username-modal">
+              <div class="overlay"></div>
+              <form>
+                <div>
+                  <label for="profile-name">Name</label>
+                  <input type="text" id="profile-name" autocomplete="off" placeholder="Code Master">
+                </div>
+
+                <div>
+                  <label for="profile-link">Github profile link</label>
+                  <input type="text" id="profile-link" autocomplete="off" placeholder="code-master">
+                </div>
+
+                <div class="form-btn-conatiner">
+                  <button class="close-btn">CLOSE</button>
+                  <button class="save-btn">SAVE</button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="settings">
-        <button class="run-btn">Run</button>
+        <button class="run-btn">RUN</button>
       </div>
     </header>
 
