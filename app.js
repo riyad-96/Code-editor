@@ -239,12 +239,12 @@ let runningConfirmation = false;
 function showConfirmationOnFormat() {
   if (!runningConfirmation) {
     runningConfirmation = true;
-    formatConfirmation.classList.add("format-confirm");
+    setTimeout(() => formatConfirmation.classList.add("format-confirm"), 500)
 
     setTimeout(() => {
       formatConfirmation.classList.remove("format-confirm");
       runningConfirmation = false;
-    }, 2500);
+    }, 3000);
   }
 }
 
